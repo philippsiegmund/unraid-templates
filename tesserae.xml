@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<!-- Unraid template for Tesserae (https://github.com/dmellok/tesserae), maintained by PSGMND. -->
+<!-- Unraid template for Tesserae (https://github.com/dmellok/tesserae), maintained by PSGMND.
+     Image is an unchanged copy of the upstream release pinned in tesserae/Dockerfile. -->
 <Container version="2">
   <Name>Tesserae</Name>
-  <Repository>ghcr.io/dmellok/tesserae:0.480.0</Repository>
-  <Registry>https://github.com/dmellok/tesserae/pkgs/container/tesserae</Registry>
+  <Repository>ghcr.io/philippsiegmund/tesserae:stable</Repository>
+  <Registry>https://github.com/users/philippsiegmund/packages/container/package/tesserae</Registry>
   <Network>host</Network>
   <MyIP/>
   <Shell>bash</Shell>
@@ -14,7 +15,7 @@
   <Category>HomeAutomation: Tools:</Category>
   <WebUI>http://[IP]:[PORT:8765]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/philippsiegmund/unraid-templates/main/tesserae.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/dmellok/tesserae/v0.480.0/static/brand/icon.png</Icon>
+  <Icon>https://raw.githubusercontent.com/philippsiegmund/unraid-templates/main/tesserae/icon.png</Icon>
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
