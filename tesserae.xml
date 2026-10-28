@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- Unraid template for Tesserae (https://github.com/dmellok/tesserae), maintained by PSGMND. -->
+<Container version="2">
+  <Name>Tesserae</Name>
+  <Repository>ghcr.io/dmellok/tesserae:0.480.0</Repository>
+  <Registry>https://github.com/dmellok/tesserae/pkgs/container/tesserae</Registry>
+  <Network>host</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/dmellok/tesserae/issues</Support>
+  <Project>https://tesserae.ink/</Project>
+  <Overview>E-ink dashboard server. Compose tile-based dashboards in the browser, render them server-side with headless Chromium and push them to e-ink panels over REST or MQTT (built-in broker on port 1883, off until enabled in Settings - Server - MQTT). Web UI on port 8765; the first visit sets the password and runs the onboarding wizard. Host networking keeps the LAN IP in render-frame URLs correct and enables mDNS (tesserae.local). Image is ~1 GB to pull.</Overview>
+  <Category>HomeAutomation: Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8765]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/philippsiegmund/unraid-templates/main/tesserae.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/dmellok/tesserae/v0.480.0/static/brand/icon.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Data" Target="/app/data" Default="/mnt/user/appdata/tesserae" Mode="rw" Description="Settings, pages, schedules and backups. Losing this folder loses the whole install." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/tesserae</Config>
+  <Config Name="Secret key" Target="TESSERAE_SECRET_KEY" Default="" Mode="" Description="Recommended. Encrypts stored credentials (API keys, broker passwords, Home Assistant token). Generate once with: python3 -c &quot;import secrets; print(secrets.token_hex(32))&quot; and keep it out of the appdata backup. Without it the key is derived from settings.json and stored secrets are lost if that file is regenerated." Type="Variable" Display="always" Required="false" Mask="true"/>
+</Container>
