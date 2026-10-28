@@ -19,6 +19,11 @@ on:
 permissions:
   contents: read
 
+defaults:
+  run:
+    # Explicit bash gives -eo pipefail; the implicit default is only -e.
+    shell: bash
+
 concurrency:
   group: tesserae-image-${{ github.ref }}
   cancel-in-progress: false
@@ -93,7 +98,8 @@ jobs:
       - name: Copy unchanged
         run: |
           # A version tag is never overwritten; if it exists it must already be this digest.
-          if existing=$(docker buildx imagetools inspect "$TARGET:$VERSION" --format '{{json .Manifest}}' 2>/dev/null | jq -r .digest); then
+          existing=$(docker buildx imagetools inspect "$TARGET:$VERSION" --format '{{json .Manifest}}' 2>/dev/null | jq -r .digest) || existing=""
+          if [[ -n $existing ]]; then
             if [[ $existing != "$DIGEST" ]]; then
               echo "::error::$TARGET:$VERSION already exists as $existing, refusing to overwrite with $DIGEST"
               exit 1
